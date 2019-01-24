@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import {Container, Row, Col} from 'react-grid-system';
+import axios from 'axios';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+ state={ profile:{} };
+
+  componentDidMount() {
+    var self = this;
+    axios
+      .get("https://api.github.com/users/Username?client_id=5d15c04c7225012d2d99&client_secret=50aed3475d1040d8439f758e4e4f1f1ec846cdca")
+      .then(function(resp) {
+        self.setState({
+          profile: resp.data
+        });
+          console.log(resp.data);
+      })
   }
-}
+  }
+  var name = { }
+    const URL = "https://api.github.com/users/" + name + "?secret keys";
+    get (url)
 
 export default App;
+
